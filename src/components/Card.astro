@@ -1,10 +1,10 @@
 ---
-const {nom,prix,surface,favori,adresse} = Astro.props;
+const {...element} = Astro.props;
 ---
 <ul>
-    <li>{prix}€</li>
-    <li>{nom}</li>
-    <li>{surface}m2</li>
-    <li>{adresse}</li>
-    <li>{favori}</li>
+    <li>{element.prix}€</li>
+    <li>{element.nom}</li>
+    <li>{element.surface}m2</li>
+    <li>{element.adresse}</li>
+    <li>{element.favori}</li>
 </ul>
