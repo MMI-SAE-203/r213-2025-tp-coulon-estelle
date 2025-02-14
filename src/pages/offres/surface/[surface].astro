@@ -1,0 +1,12 @@
+---
+import { getSurface } from "../../../js/backend.mjs";
+import Base from "../../../layouts/Base.astro";
+const { surface } = Astro.params;
+const offre = await getSurface();
+if(!offre){
+   return Astro.redirect('/offres');
+}
+---
+<Base titre={surface}>
+    <h2>{surface}</offre>
+</Base>
