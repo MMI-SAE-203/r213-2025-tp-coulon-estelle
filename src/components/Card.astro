@@ -6,7 +6,12 @@ const {...element} = Astro.props;
     <li>{element.nom}</li>
     <li>{element.surface}m2</li>
     <li>{element.adresse}</li>
-    <li>{element.favori}</li>
+    <li>{element.favori}
+        <button>
+        <img src="src/assets/favoris.png" alt="Favorite" width="20" height="20">
+        </button>
+    </li>
     <img src={element.image} alt="">
     <a href={`/offres/${element.id}`}>Voir plus</a>
 </ul>
+</button>
