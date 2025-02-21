@@ -72,3 +72,42 @@ export async function filterByPrix(prixMin, prixMax) {
         return [];
     }
 }
+
+export async function getAgent() {
+    try {
+        let agent = await pb.collection('agent').getFullList({
+            sort: '-created',
+        });
+        return agent;
+    } catch (error) {
+        console.log('Une erreur est survenue en lisant la liste des agents', error);
+        return [];
+    }
+}
+
+export async function addAgent(agent) {
+    try {
+        await pb.collection('agent').create(agent);
+        return {
+            success: true,
+            message: 'Agent ajoutée avec succès'
+        };
+    } catch (error) {
+        console.log("Une erreur est survenue en ajoutant l'agent", error);
+        return {
+            success: false,
+            message: "Une erreur est survenue en ajoutant l'agent" + error,
+        };
+    }
+}
+
+export async function getAgents(id) {
+    try {
+        let data = await pb.collection('agent').getOne(id);
+        data.imageUrl = pb.files.getURL(data, data.image);
+        return data;
+    } catch (error) {
+        console.log("Une erreur est survenue en lisant l'agent", error);
+        return null;
+    }
+}

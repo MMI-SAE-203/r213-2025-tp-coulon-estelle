@@ -1,0 +1,11 @@
+---
+const {...element} = Astro.props;
+---
+<div>
+<ul>
+    <li>{element.nom}</li>
+    <li>{element.prenom}</li>
+    <li>{element.email}</li>
+    <a href={`/agents${element.id}`}>Voir plus</a>
+</ul>
+</div>

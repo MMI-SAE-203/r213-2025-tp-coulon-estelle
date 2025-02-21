@@ -1,0 +1,21 @@
+---
+import Base from "../../layouts/Base.astro"
+import { addAgent } from "../../js/backend.mjs"
+
+let message = '';
+if (Astro.request.method === "POST") {
+    const formData = await Astro.request.formData();
+    const response = await addAgent(formData);
+    message = response.message;
+}
+---
+
+<base title="Ajouter un agent">
+<h1 class="text-lg">Ajouter un agent</h1>
+<p>{message}</p>
+<form action="/agent/add" method="POST" enctype="multipart/form-data">
+    <input type="text" name="nom" placeholder="Nom de l'agent'" required class="w-full mt-2 p-2 border border-gray-300 rounded-md" />
+    <input type="text" name="prenom" placeholder="Prenom de l'agent" />
+    <input type="text" name="mail" placeholder="Email de l'agent"  />
+    <button type="submit">Ajouter</button>
+</form>
